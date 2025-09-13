@@ -17,7 +17,13 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        $notification = array (
+
+            'message' => 'User logged out Successfully', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/login')->with($notification);
     }
 
     public function profile() {
@@ -28,7 +34,48 @@ class AdminController extends Controller
         return view('admin.admin_profile_view', compact('adminData'));
     }
 
+    public function edit() {
 
+        $id = Auth::user()->id;
+        $editData = User::find($id);
+
+        return view('admin.admin_profile_edit', compact('editData'));
+        
+    }
+
+    public function store(Request $request) {
+
+        $id = Auth::user()->id;
+        $data = User::find($id);
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->username = $request->username;
+
+        if($request->file('image')) {
+
+            $file = $request->file('image');
+
+            $filename = date('YmdHi').$file->getClientOriginalName();
+
+            $file->move(public_path('upload/admin_images'), $filename);
+
+            $data['image'] = $filename;
+        } 
+
+        $data->save();
+
+        $notification = array (
+
+            'message' => 'Admin Profile Updated Successfully', 
+            'alert_type' => 'success'
+        );
+
+        return redirect()->route('admin.profile')->with($notification);
+
+    
+    }
+ 
 
 
 }
