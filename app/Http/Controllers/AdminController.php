@@ -68,7 +68,7 @@ class AdminController extends Controller
         $notification = array (
 
             'message' => 'Admin Profile Updated Successfully', 
-            'alert_type' => 'success'
+            'alert-type' => 'success'
         );
 
         return redirect()->route('admin.profile')->with($notification);
