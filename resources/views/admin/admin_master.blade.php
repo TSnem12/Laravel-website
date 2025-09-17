@@ -126,7 +126,12 @@
         
         </script>
        
-        
+        <!--tinymce js-->
+        <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
+
+        <!-- init js -->
+        <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }}"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         
         <script src="{{ asset('backend/assets/js/code.js') }}"></script>
