@@ -2,6 +2,7 @@
 
     $homeSlide = App\Models\HomeSlide::find(1);
     $aboutPage = App\Models\About::find(1);
+    $allMultiImage = App\Models\MultiImage::all();
 
 @endphp
 
