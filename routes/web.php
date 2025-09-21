@@ -6,8 +6,10 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
 
 use App\Models\HomeSlide;
+use App\Models\Portfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,16 @@ Route::controller(AboutController::class)->group(function() {
     Route::get('/delete/multi/image{id}', 'DeleteMultiImage')->name('delete.multi.image');
 });
 
+
+Route::controller(PortfolioController::class)->group(function() {
+    Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');
+    Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
+    Route::post('/store/portfolio', 'StorePortfolio')->name('store.portfolio');
+    Route::get('/edit/portfolio{id}', 'EditPortfolio')->name('edit.portfolio');
+    Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
+    Route::get('/delete/portfolio{id}', 'DeletePortfolio')->name('delete.portfolio');
+
+});
 
 
 
