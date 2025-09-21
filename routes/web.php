@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 
@@ -73,6 +74,15 @@ Route::controller(PortfolioController::class)->group(function() {
 
 });
 
+
+Route::controller(BlogCategoryController::class)->group(function() {
+    Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+    Route::get('/add/blog/category', 'AddBlogCategory')->name('add.blog.category');
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+    Route::get('/edit/blog/category{id}', 'EditBlogCategory')->name('edit.blog.category');
+    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+    Route::get('/delete/blog/category{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+});
 
 
 

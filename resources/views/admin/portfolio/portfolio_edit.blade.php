@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Portfolio Edit Page</h4> <br> <br>
+                        <h4 class="card-title">Edit Portfolio Page</h4> <br> <br>
                        
                         <form method="POST" action="{{ route('update.portfolio') }}" enctype="multipart/form-data">
                             
