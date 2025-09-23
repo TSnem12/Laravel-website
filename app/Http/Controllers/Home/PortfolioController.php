@@ -101,7 +101,7 @@ class PortfolioController extends Controller
 
             $notification = array (
 
-                'message' => 'Portfolio Updated without Image Successfully', 
+                'message' => 'Portfolio Updated with Image Successfully', 
                 'alert-type' => 'success'
             );
         
