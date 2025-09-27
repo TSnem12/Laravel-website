@@ -26,25 +26,34 @@ use App\Models\Portfolio;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('frontend.index');
-});
+});*/
 
 Route::controller(DemoController::class)->group(function () {
+    Route::get('/', 'HomeMain')->name('home');
+    
     Route::get('/about', 'Index')->name('about.page')->middleware('check');
     Route::get('/contact', 'ContactMethod')->name('contact.page');
 });
 
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin/logout', 'destroy')->name('admin.logout');
-    Route::get('/admin/profile', 'profile')->name('admin.profile');
-    Route::get('/edit/profile', 'edit')->name('edit.profile');
-    Route::post('/store/profile', 'store')->name('store.profile');
+
+Route::middleware(['auth'])->group(function() {
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/admin/logout', 'destroy')->name('admin.logout');
+        Route::get('/admin/profile', 'profile')->name('admin.profile');
+        Route::get('/edit/profile', 'edit')->name('edit.profile');
+        Route::post('/store/profile', 'store')->name('store.profile');
+        
+        Route::get('/change/password', 'ChangePassword')->name('change.password');
+        Route::post('/update/password', 'UpdatePassword')->name('update.password');
     
-    Route::get('/change/password', 'ChangePassword')->name('change.password');
-    Route::post('/update/password', 'UpdatePassword')->name('update.password');
+    });
+
 
 });
+
 
 
 Route::controller(HomeSliderController::class)->group(function () {
@@ -74,7 +83,7 @@ Route::controller(PortfolioController::class)->group(function() {
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio{id}', 'DeletePortfolio')->name('delete.portfolio');
     Route::get('/portfolio/details{id}', 'PortfolioDetails')->name('portfolio.details');
-
+    Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
 });
 
 
