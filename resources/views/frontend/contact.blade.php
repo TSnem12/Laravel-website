@@ -2,6 +2,14 @@
 @section('main')
 
 
+@section('title')
+
+    Contact | EasyLearning Website
+
+@endsection
+
+
+
 <main>
 
     <!-- breadcrumb-area -->
